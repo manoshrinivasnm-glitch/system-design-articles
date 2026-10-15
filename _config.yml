@@ -1,0 +1,37 @@
+title: System Design Articles
+description: Interview-ready high-level designs for 29 system design problems (21 course problems plus 8 common SDE-2 designs). Each one goes from a simple design to its flaws to a scalable design, sized for a 30-minute HLD round.
+url: "https://manoshrinivasnm-glitch.github.io"
+baseurl: "/system-design-articles"
+repo_url: "https://github.com/manoshrinivasnm-glitch/system-design-articles"
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+plugins:
+  - jekyll-seo-tag
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+exclude:
+  - tools
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
+  - ARTICLE_GUIDE.md
+  - Gemfile
+  - Gemfile.lock
+defaults:
+  - scope:
+      path: "p"
+    values:
+      layout: article
+  - scope:
+      path: ""
+    values:
+      layout: default

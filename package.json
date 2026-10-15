@@ -1,0 +1,13 @@
+{
+  "name": "system-design-articles",
+  "private": true,
+  "description": "Tooling only: validates the Mermaid diagrams in p/*.md",
+  "type": "module",
+  "scripts": {
+    "check": "node tools/check_diagrams.mjs p/*.md"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3",
+    "mermaid": "^11.12.0"
+  }
+}

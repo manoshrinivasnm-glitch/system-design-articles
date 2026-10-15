@@ -1,0 +1,21 @@
+name: Diagrams check
+
+on:
+  push:
+    branches: [main]
+    paths: ['p/**', 'tools/check_diagrams.mjs', 'package.json', '.github/workflows/diagrams-check.yml']
+  pull_request:
+    paths: ['p/**', 'tools/check_diagrams.mjs']
+  workflow_dispatch:
+
+jobs:
+  parse-mermaid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - name: Parse every Mermaid diagram and reject Liquid braces
+        run: npm run check

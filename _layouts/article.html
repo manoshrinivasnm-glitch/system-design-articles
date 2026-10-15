@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="article">
+  <p class="crumbs">
+    <a href="{{ '/' | relative_url }}">All problems</a> ›
+    <span>{{ page.category }}</span>
+  </p>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">
+    {% if page.difficulty %}<span class="badge badge-{{ page.difficulty | downcase }}">{{ page.difficulty }}</span>{% endif %}
+    {% if page.id > 0 %}<span class="pill">Problem&nbsp;{{ page.id }}</span>{% endif %}
+    {% if page.aka %}<span class="pill pill-sheet">{{ page.aka }}</span>{% endif %}
+    {% assign meta = site.data.problems | where: "slug", page.slug | first %}
+    {% if meta.sde2 %}<a class="pill" href="{{ '/' | relative_url }}#sde2">Common SDE-2</a>{% endif %}
+  </p>
+  <p class="links">
+    <a href="{{ site.repo_url }}/blob/main/{{ page.path }}" rel="noopener">View on GitHub ↗</a>
+    <a href="{{ site.repo_url }}/edit/main/{{ page.path }}" rel="noopener">Edit this article ↗</a>
+  </p>
+  {{ content }}
+  <nav class="pager" aria-label="Previous and next problem">
+    {% if page.prev_slug %}<a class="prev" href="{{ '/p/' | append: page.prev_slug | append: '.html' | relative_url }}">← {{ page.prev_title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next_slug %}<a class="next" href="{{ '/p/' | append: page.next_slug | append: '.html' | relative_url }}">{{ page.next_title }} →</a>{% endif %}
+  </nav>
+</article>
+<script type="module" src="{{ '/assets/article.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
